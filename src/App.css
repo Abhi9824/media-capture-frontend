@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+margin-top: 30px;
+  overflow: auto;
+  height: calc(100vh - 70px); 
+}
