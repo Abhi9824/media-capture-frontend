@@ -37,8 +37,6 @@ const Home = () => {
       console.error("No files selected.");
       return;
     }
-
-    console.log("Submitting files:", mediaFile); // Debugging output
     dispatch(addMediaAsync(mediaFile)).then(() => {
       dispatch(fetchAllUserMedia());
     });
@@ -70,18 +68,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (media.length === 0) {
+    if (!media || media.length === 0) {
       dispatch(fetchAllUserMedia());
     }
-  }, [dispatch, media.length]);
+  }, [dispatch, media]);
 
   useEffect(() => {
     setMedias(media);
   }, [media]);
-
-  useEffect(() => {
-    dispatch(fetchAllUserMedia());
-  }, []);
 
   return (
     <div className="container">
@@ -253,7 +247,7 @@ const Home = () => {
                               <video
                                 key={index}
                                 controls
-                                className="preview-video w-100"
+                                className="preview-video w-50 img-fluid"
                               >
                                 <source src={url} type={file.type} />
                                 Your browser does not support the video tag.

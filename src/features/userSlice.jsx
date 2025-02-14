@@ -25,7 +25,6 @@ export const signupUser = createAsyncThunk("user/signup", async (userData) => {
 });
 
 export const loginUser = createAsyncThunk("user/login", async (credentials) => {
-  console.log("credentials", credentials);
   try {
     const response = await axios.post(`${api}/login`, credentials, {
       headers: {
@@ -33,7 +32,6 @@ export const loginUser = createAsyncThunk("user/login", async (credentials) => {
       },
     });
 
-    console.log("API Response:", response); // Debugging
     if (response.status === 200) {
       const data = response.data;
       if (data?.token) {

@@ -30,7 +30,6 @@ export const fetchAllUserMedia = createAsyncThunk(
 export const addMediaAsync = createAsyncThunk(
   "media/addMedia",
   async (mediaFiles) => {
-    console.log("Media Files", mediaFiles);
     try {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("Token is missing, authentication error");
@@ -118,7 +117,6 @@ const mediaSlice = createSlice({
         state.mediaStatus = "loading";
       })
       .addCase(fetchAllUserMedia.fulfilled, (state, action) => {
-        console.log("Fetched media:", action.payload);
         state.mediaStatus = "success";
         state.media = action.payload;
       })
@@ -131,9 +129,7 @@ const mediaSlice = createSlice({
       })
       .addCase(addMediaAsync.fulfilled, (state, action) => {
         state.mediaStatus = "success";
-        // state.media = [...state.media, action.payload];
         state.media = [...state.media, action.payload];
-
         toast.success("Media added");
       })
       .addCase(addMediaAsync.rejected, (state, action) => {
