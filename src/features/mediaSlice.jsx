@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const api = `${BASE_URL}/user`;
 
 export const fetchAllUserMedia = createAsyncThunk(
-  "media/fetchUserMedia",
+  "media/fetchAllUserMedia",
   async () => {
     try {
       const token = localStorage.getItem("token");

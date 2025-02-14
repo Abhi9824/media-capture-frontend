@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { RequiresAuth } from "./utils/auth";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import { fetchAllUserMedia } from "./features/mediaSlice";
 
 // Lazy-loaded components
 const Login = lazy(() => import("./pages/auth/Login"));
@@ -31,6 +32,7 @@ function App() {
       dispatch(fetchProfileAsync()).then((res) => {
         if (!res.error) {
           navigate("/");
+          return dispatch(fetchAllUserMedia());
         }
       });
     }

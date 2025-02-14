@@ -77,6 +77,10 @@ const Home = () => {
     setMedias(media);
   }, [media]);
 
+  useEffect(() => {
+    dispatch(fetchAllUserMedia());
+  }, []);
+
   return (
     <div className="container">
       <div className="d-flex flex-column">
